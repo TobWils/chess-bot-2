@@ -12,6 +12,19 @@ import chess.pgn as pgn
 
 import time
 
+class ChessGamesDataset(Dataset):
+    def __init__(self, raw_games):
+        
+
+        self.data = raw_games
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        return self.data[idx]
+
+
 
 class chess_bot():
     def __init__(self, bot_player):
@@ -36,13 +49,13 @@ class chess_bot():
     def main(self):
         self.initalise_board()
 
-        num_games_read = 1000
+        num_games_read = 10
 
         start = time.time()
         self.read_game_data(num_games_read)
         end = time.time()
 
-        print(f"time taken was: {end - start}\ntime per game was: {(end - start)/num_games_read}")
+        print(f"time taken was: {end - start}\ntime per game was: {(end - start)/num_games_read}\n")
 
 
 
