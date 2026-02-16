@@ -1,6 +1,16 @@
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import Dataset, DataLoader
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
 import chess
 import chess.pgn as pgn
-import numpy as np
+
+import time
 
 
 class chess_bot():
@@ -15,7 +25,6 @@ class chess_bot():
             count = sum(1 for line in fp)
         
         num_games = int(count/18)
-        print(num_games)
         self.Games = np.array([0]*num_games, dtype=np.ndarray)
         with open("lichess_db_1_decompresed.pgn") as raw_data:
             for i in range(min(num_games,max_games_to_read)):
@@ -27,7 +36,7 @@ class chess_bot():
     def main(self):
         self.initalise_board()
 
-        self.read_game_data(10)
+        self.read_game_data(10000)
 
 
 
