@@ -75,8 +75,8 @@ class chess_translator():
                 outcomes[n][1] = float(out_str[2])
                 n += 1
         
-        pd.DataFrame(positions).to_csv("bot_translated_data/translated_positions.csv", index=False, header=False)
-        pd.DataFrame(outcomes).to_csv("bot_translated_data/outcomes.csv", index=False, header=False)
+        pd.DataFrame(positions).to_csv("bot_translated_data/translated_positions_big.csv", index=False, header=False)
+        pd.DataFrame(outcomes).to_csv("bot_translated_data/outcomes_big.csv", index=False, header=False)
         end = time.time()
 
         print(f"time taken was: {end - start}\navg time per game was: {(end - start)/num_games_read}\n")
