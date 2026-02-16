@@ -25,7 +25,7 @@ class chess_bot():
             count = sum(1 for line in fp)
         
         num_games = int(count/18)
-        self.Games = np.array([0]*num_games, dtype=np.ndarray)
+        self.Games = np.array([0]*min(num_games,max_games_to_read), dtype=np.ndarray)
         with open("lichess_db_1_decompresed.pgn") as raw_data:
             for i in range(min(num_games,max_games_to_read)):
                 self.Games[i] = pgn.read_game(raw_data)
@@ -36,7 +36,13 @@ class chess_bot():
     def main(self):
         self.initalise_board()
 
-        self.read_game_data(10000)
+        num_games_read = 1000
+
+        start = time.time()
+        self.read_game_data(num_games_read)
+        end = time.time()
+
+        print(f"time taken was: {end - start}\ntime per game was: {(end - start)/num_games_read}")
 
 
 
