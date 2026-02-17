@@ -49,7 +49,7 @@ class chess_translator():
         return self.bitboards_to_array(bitboards)
     
     def main(self):
-        num_games_read = 1000
+        num_games_read = 1000# 4200 # randomly starts making the kernel go haywire after 4000 games otherwise it should be able to translate everything in about 30 min
 
         start = time.time()
         self.read_game_data(num_games_read)
